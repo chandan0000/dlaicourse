@@ -31,8 +31,7 @@ def parse_args():
     parser.add_argument('--confidence', type=float, help='Minimum required confidence level of bounding boxes',
                         default=0.6)
 
-    args = parser.parse_args()
-    return args
+    return parser.parse_args()
 
 if __name__ == '__main__':
     args = parse_args()
