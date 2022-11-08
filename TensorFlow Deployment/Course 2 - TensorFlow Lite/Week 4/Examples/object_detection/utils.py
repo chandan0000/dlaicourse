@@ -30,10 +30,7 @@ def create_category_index(categories):
     category_index: a dict containing the same entries as categories, but keyed
       by the 'id' field of each category.
   """
-  category_index = {}
-  for index, cat in enumerate(categories):
-    category_index[index] = cat
-  return category_index
+  return dict(enumerate(categories))
 
 
 def load_labelmap(path):
@@ -53,10 +50,7 @@ def get_label_map_dict(label_map_path):
     A dictionary mapping label names to id.
   """
   label_map = load_labelmap(label_map_path)
-  label_map_dict = {}
-  for item in label_map.item:
-    label_map_dict[item.name] = item.id
-  return label_map_dict
+  return {item.name: item.id for item in label_map.item}
 
 
 def load_image(frame, new_size=(300, 300)):
@@ -70,5 +64,4 @@ def load_image(frame, new_size=(300, 300)):
   right = (width + new_width) // 2
   bottom = (height + new_height) // 2
 
-  image = frame[left: right, top: bottom, :]
-  return image
+  return frame[left: right, top: bottom, :]

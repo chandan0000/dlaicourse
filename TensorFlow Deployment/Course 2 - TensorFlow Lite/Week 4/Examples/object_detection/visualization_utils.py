@@ -103,14 +103,10 @@ def draw_bounding_box_on_image(image,
     font = ImageFont.truetype('arial.ttf', 24)
   except IOError:
     font = ImageFont.load_default()
-  
+
   display_str_height = font.getsize(display_str)[1]
 
-  if top > display_str_height:
-    text_bottom = top
-  else:
-    text_bottom = bottom + display_str_height
-    
+  text_bottom = top if top > display_str_height else bottom + display_str_height
   text_width, text_height = font.getsize(display_str)
   margin = np.ceil(0.05 * text_height)
   draw.rectangle(
